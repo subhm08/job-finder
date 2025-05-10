@@ -1,52 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import JobList from "./JobList";
+import PersonlizedJobs from "./PersonlizedJobs";
 import JobDetails from "./JobDetails";
 import Navbar from "./Navbar";
 import AllJobs from "./AllJobs";
-import { AuthProvider } from "./context/AuthContext";
-import LoginModal from "./LoginModal";
-import ProtectedRoute from "./ProtectedRoute";
 import Dashboard from "./Dashboard";
+import FavJobs from "./FavJobs";
 
 const App = () => {
- 
-  const user = {
-    
-    "name": "shubham kumar",
-    "email": "krsubam4u@gmail.com",
-    "phone": "7254050024",
-    "password": "$2b$10$ujmwY1ibPInXANRhyCdlfujzAb7x.9yp2Cb6tyn21HHj8.nRFeZYu",
-    "favorites":  ['1738563928','1738558322', '1738556369' ] 
-  }
+
   return (
-    <AuthProvider>
-      <Router>
-     <Navbar/>
-     <LoginModal/>
+
+    <Router>
+      <Navbar />
       <Routes>
-
         <Route path="/" element={<AllJobs />} />
-
-        <Route path="/job/:jobId" element={
-          <ProtectedRoute>
-            <JobDetails />
-          </ProtectedRoute>} />
-
-        <Route path="/jobs" element={
-          <ProtectedRoute>
-            <JobList />
-          </ProtectedRoute>
-        } />
-
-        <Route path="/dashboard" element={ 
-          <ProtectedRoute>
-            <Dashboard user = {user}/>
-          </ProtectedRoute>} />
-
+        <Route path="/job/:jobId" element={<JobDetails />} />
+        <Route path="/personlized-jobs" element={<PersonlizedJobs />} />
+        <Route path="/favjobs" element={<FavJobs />} />
       </Routes>
     </Router>
-    </AuthProvider>
+
   );
 };
 

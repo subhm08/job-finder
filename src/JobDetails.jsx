@@ -7,7 +7,7 @@ const JobDetails = () => {
   const [job, setJob] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/job/${jobId}`)
+    axios.get(`https://job-finder-backend-vqg6.onrender.com/job/${jobId}`)
       .then((response) => setJob(response.data))
       .catch(() => setJob(null));
   }, [jobId]);

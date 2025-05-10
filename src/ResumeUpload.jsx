@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ResumeUpload = ({ setFilteredJobs }) => {
+const ResumeUpload = ({ setFilteredJobs, loading, setLoading }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [skills, setSkills] = useState([]);
 
@@ -11,12 +11,13 @@ const ResumeUpload = ({ setFilteredJobs }) => {
 
   const handleUpload = async () => {
     if (!selectedFile) return alert("Please select a file.");
+    setLoading(true);
 
     const formData = new FormData();
     formData.append("resume", selectedFile);
 
     try {
-      const response = await axios.post("http://localhost:5000/upload-resume", formData, {
+      const response = await axios.post("https://job-finder-backend-vqg6.onrender.com/upload-resume", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -24,6 +25,8 @@ const ResumeUpload = ({ setFilteredJobs }) => {
       setFilteredJobs(response.data.jobs);
     } catch (error) {
       console.error("Error uploading resume:", error);
+    } finally{
+      setLoading(false);
     }
   };
 
@@ -34,7 +37,8 @@ const ResumeUpload = ({ setFilteredJobs }) => {
       <button onClick={handleUpload} className="mx-4 bg-blue-100 text-blue-700 px-6 py-2 rounded-lg hover:bg-blue-200 font-semibold font-mono tracking-wide">
         Upload 
       </button>
-
+    {console.log(skills)
+    }
       {skills.length > 0 && (
         <div className="mt-4">
           <h3 className="font-semibold text-blue-50">Extracted Skills:</h3>
