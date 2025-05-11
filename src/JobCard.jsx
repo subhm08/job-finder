@@ -53,7 +53,7 @@ const JobCard = ({ job, onFavoriteToggle }) => {
         </div>
       </div>
       <div className="flex items-center mt-4 justify-between">
-        <Link to={`/job/${job.job_id}`} target="blank" className="inline-block bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600">View More</Link>
+        <Link to={`/job/${job.job_id}`} target="_self" className="inline-block bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600">View More</Link>
         <button
           onClick={handleFavoriteClick}
           className={`rounded px-3 py-1 font-semibold ${
