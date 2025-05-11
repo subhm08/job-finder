@@ -49,7 +49,6 @@ const FavJobs = () => {
   return (
    
     <div className="p-4">
-        {/* <h2 className="text-blue-600 font-semibold text-2xl font-mono mb-4"> */}
               <h3 className="text-2xl font-semibold text-blue-800 mb-4">Favorite Jobs</h3>
               {
                 jobs.length > 0 ?
@@ -62,11 +61,7 @@ const FavJobs = () => {
                     <p className="text-gray-500 text-center">No favorite jobs saved yet.</p>
                   )
               }
-             
-            {/* </div> */}
-    
           </div>
-        // </div>
   );
 };
 
