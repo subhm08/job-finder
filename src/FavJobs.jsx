@@ -48,10 +48,8 @@ const FavJobs = () => {
 
   return (
    
-     <div className="min-h-screen bg-gray-50 p-6">
-          <div className="max-w-5xl mx-auto space-y-6">
-            {/* Favorites Section */}
-            <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col justify-items-star items-sart" >
+    <div className="p-4">
+        {/* <h2 className="text-blue-600 font-semibold text-2xl font-mono mb-4"> */}
               <h3 className="text-2xl font-semibold text-blue-800 mb-4">Favorite Jobs</h3>
               {
                 jobs.length > 0 ?
@@ -65,10 +63,10 @@ const FavJobs = () => {
                   )
               }
              
-            </div>
+            {/* </div> */}
     
           </div>
-        </div>
+        // </div>
   );
 };
 

@@ -21,9 +21,6 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center gap-3">
         <img src={logo} alt="Job Finder Logo" className="h-14 w-14 object-contain" />
-        <h1 className="text-3xl font-extrabold text-blue-600 tracking-tight font-mono">
-          Job Finder
-        </h1>
       </div>
 
         {/* Hamburger Button */}

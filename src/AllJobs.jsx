@@ -60,21 +60,22 @@ const AllJobs = () => {
           Array.from({ length: 5 }).map((_, i) => <JobCardShimmer key={i} />)
         ) : (
           jobs.map((job) => (
-            <JobCard
-              key={job.job_id}
-              job={job}
-              onFavoriteToggle={handleFavoriteToggle}
-            />
+            <>
+              <JobCard
+                key={job.job_id}
+                job={job}
+                onFavoriteToggle={handleFavoriteToggle}
+              />
+              <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+                loading={loading}
+              />
+            </>
           ))
         )}
-      </div>
-
-      <Pagination
-        currentPage={page}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        loading={loading}
-      />
+      </div> 
     </>
   );
 };

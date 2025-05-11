@@ -6,7 +6,6 @@ const ResumeUpload = ({ setFilteredJobs, loading, setLoading }) => {
   const [skills, setSkills] = useState([]);
   const [resumeFileName, setResumeFileName] = useState("");
 
-  // Load from localStorage on component mount
   useEffect(() => {
     const savedSkills = JSON.parse(localStorage.getItem("UserSkills"));
     const savedJobs = JSON.parse(localStorage.getItem("userJobs"));
@@ -41,7 +40,6 @@ const ResumeUpload = ({ setFilteredJobs, loading, setLoading }) => {
       setSkills(parsedSkills);
       setFilteredJobs(matchedJobs);
 
-      // Persist data
       localStorage.setItem("UserSkills", JSON.stringify(parsedSkills));
       localStorage.setItem("userJobs", JSON.stringify(matchedJobs));
       localStorage.setItem("uploadedResumeFileName", selectedFile.name);
@@ -54,31 +52,37 @@ const ResumeUpload = ({ setFilteredJobs, loading, setLoading }) => {
   };
 
   return (
-    <div className="p-6 bg-blue-500 shadow-lg rounded-2xl">
-      <h2 className="text-lg font-bold text-white mb-4">Upload Your Resume</h2>
+    <div className="w-full ma-w-2xl mx-auto p-6 bg-blue-500 shadow-lg rounded-2xl">
+      <h2 className="text-xl md:text-2xl font-bold text-white mb-4 text-center">
+        Upload Your Resume
+      </h2>
 
-      <input
-        type="file"
-        accept=".pdf"
-        onChange={handleFileChange}
-        className="bg-white text-blue-600 px-4 py-2 rounded cursor-pointer"
-      />
+      <div className="flex flex-col md:flex-row items-center md:items-end gap-4">
+        <input
+          type="file"
+          accept=".pdf"
+          onChange={handleFileChange}
+          className="bg-white text-blue-600 px-4 py-2 rounded cursor-pointer w-full md:w-auto"
+        />
 
-      <button
-        onClick={handleUpload}
-        disabled={loading}
-        className="mx-4 bg-blue-100 text-blue-700 px-6 py-2 rounded-lg hover:bg-blue-200 font-semibold font-mono tracking-wide"
-      >
-        {loading ? "Uploading..." : "Upload"}
-      </button>
+        <button
+          onClick={handleUpload}
+          disabled={loading}
+          className="bg-blue-100 text-blue-700 px-6 py-2 rounded-lg hover:bg-blue-200 font-semibold font-mono tracking-wide w-full md:w-auto"
+        >
+          {loading ? "Uploading..." : "Upload"}
+        </button>
+      </div>
 
       {resumeFileName && (
-        <p className="text-sm text-blue-100 mt-2">Uploaded: {resumeFileName}</p>
+        <p className="text-sm text-blue-100 mt-3 text-center md:text-left">
+          Uploaded: {resumeFileName}
+        </p>
       )}
 
       {skills.length > 0 && (
-        <div className="mt-4">
-          <h3 className="font-semibold text-blue-50">Extracted Skills:</h3>
+        <div className="mt-6">
+          <h3 className="font-semibold text-blue-50 text-lg">Extracted Skills:</h3>
           <div className="flex flex-wrap gap-2 mt-2">
             {skills.map((skill, index) => (
               <span
