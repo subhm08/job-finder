@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PersonlizedJobs from "./PersonlizedJobs";
 import JobDetails from "./JobDetails";
@@ -6,8 +5,21 @@ import Navbar from "./Navbar";
 import AllJobs from "./AllJobs";
 import Dashboard from "./Dashboard";
 import FavJobs from "./FavJobs";
+import { useEffect } from "react";
 
 const App = () => {
+  useEffect(() => {
+    const handleUnload = () => {
+      localStorage.removeItem("UserSkills");
+      localStorage.removeItem("userJobs");
+      localStorage.removeItem("uploadedResumeFileName");
+      localStorage.removeItem("favoriteJobs")
+    };
+  
+    window.addEventListener("beforeunload", handleUnload);
+    return () => window.removeEventListener("beforeunload", handleUnload);
+  }, []);
+  
 
   return (
 
