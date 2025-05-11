@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // icon library
+import logo from "./assets/logo.png"
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,9 +19,12 @@ const Navbar = () => {
     <div className="bg-white px-4 py-4 shadow-xl relative z-50">
       <div className="flex items-center justify-between">
         {/* Logo */}
-        <div className="logo font-mono tracking-wide text-2xl md:text-3xl font-semibold text-blue-500">
-          <p className="border-2 border-double py-1 px-4 rounded-lg">JOB FINDER</p>
-        </div>
+        <div className="flex items-center gap-3">
+        <img src={logo} alt="Job Finder Logo" className="h-14 w-14 object-contain" />
+        <h1 className="text-3xl font-extrabold text-blue-600 tracking-tight font-mono">
+          Job Finder
+        </h1>
+      </div>
 
         {/* Hamburger Button */}
         <button
